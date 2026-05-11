@@ -6,6 +6,12 @@
 
 Dart package to discover and connect with Chromecast devices
 
+## Fork changes
+
+This is a detached fork of [johnvuko/flutter_cast](https://github.com/johnvuko/flutter_cast) (detached in order to make it publicly available on pub.dev). Differences from upstream `2.1.0`:
+
+- Upgraded `protobuf` dependency from `^3.1.0` to `^6.0.0` for compatibility with newer Dart/Flutter projects.
+
 ## Installation
 
 Add this to your package's pubspec.yaml file:
