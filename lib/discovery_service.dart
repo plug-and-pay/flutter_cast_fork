@@ -27,7 +27,8 @@ class CastDiscoveryService {
         case BonsoirDiscoveryServiceResolvedEvent():
           final service = event.service;
           final port = service.port;
-          final host = service.host;
+          // The IP address when the platform resolved one, else the mDNS hostname (`xxx.local.`).
+          final host = service.hostAddress ?? service.hostname;
 
           String name = [
             service.attributes['md'],

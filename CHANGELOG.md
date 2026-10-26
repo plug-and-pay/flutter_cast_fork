@@ -1,6 +1,7 @@
 ## [2.2.0]
 
-* Upgrade dependency `bonsoir` to 6.0.0 (the iOS/macOS implementation supports Swift Package Manager)
+* Upgrade dependency `bonsoir` to 7.x. Its iOS/macOS implementation builds under Swift Package Manager
+  (6.x misses `import Foundation`), and it reports the IP address again next to the `.local` hostname.
 
 ## [2.1.0]
 
