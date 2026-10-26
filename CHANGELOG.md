@@ -1,3 +1,7 @@
+## [2.2.0]
+
+* Upgrade dependency `bonsoir` to 6.0.0 (the iOS/macOS implementation supports Swift Package Manager)
+
 ## [2.1.0]
 
 * Remove upper version limit for `bonsoir`
