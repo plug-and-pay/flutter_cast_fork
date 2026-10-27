@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:bonsoir/bonsoir.dart';
 
@@ -27,8 +28,13 @@ class CastDiscoveryService {
         case BonsoirDiscoveryServiceResolvedEvent():
           final service = event.service;
           final port = service.port;
-          // The IP address when the platform resolved one, else the mDNS hostname (`xxx.local.`).
-          final host = service.hostAddress ?? service.hostname;
+          // An IPv4 address when the platform resolved one, else any address, else the mDNS hostname
+          // (`xxx.local.`). Bonsoir lists addresses in arrival order, so an IPv6 link-local address can come
+          // first, and connecting to a Chromecast through one often fails.
+          final host = service.hostAddresses.firstWhere(
+            (address) => InternetAddress.tryParse(address)?.type == InternetAddressType.IPv4,
+            orElse: () => service.hostAddress ?? service.hostname ?? '',
+          );
 
           String name = [
             service.attributes['md'],
@@ -38,7 +44,7 @@ class CastDiscoveryService {
             name = service.name;
           }
 
-          if (host == null) {
+          if (host.isEmpty) {
             return;
           }
 

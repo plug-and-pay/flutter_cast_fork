@@ -1,3 +1,8 @@
+## [2.2.1]
+
+* Connect to a device's IPv4 address when it has one. Bonsoir 7 lists addresses in arrival order, so an IPv6
+  link-local address could come first and the connection would fail.
+
 ## [2.2.0]
 
 * Upgrade dependency `bonsoir` to 7.x. Its iOS/macOS implementation builds under Swift Package Manager
